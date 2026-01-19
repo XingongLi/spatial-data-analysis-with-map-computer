@@ -28,6 +28,9 @@ First we need to create a GitHub repository for the book. Here we assume that we
 
 * Use the "Use this template\Create a new repository" to create a new project on our GitHub repository
 * Give a name to the book repository and simple description and then create the repository
+
+Note: Jupyter-Book 2.x has some issues when building the book using command "uv run jupyter-book build .". So we will edit the file directly on GitHub to specify the version of 1.0.4 instead of 2.x for the package (i.e., jupyter-book==1.0.4). This is NOT necessary when those issues are addressed.
+
 * Create a special branch (with the name "gh-pages") for the book repository to publish the book as [GitHub Pages](https://pages.github.com/) (basically a web site on github.io to host your personal, organization, or project pages from a GitHub repository). This is done by click on "main" and type in "gh-pages" and create the gh-pages branch from main. This also initiate the process (i.e., "Initial commit") of building the web site.
 * The initial commit may encounter a permission error which can be resolved by changing "Settings\Actions\General\Workflow permissions" to "Read and write permission and rerun the job.
 * Go to "Settings\Pages" to view the book web site. You can also link the site to a custom domain here.
@@ -56,11 +59,8 @@ uv venv --python 3.12
 
 # Activate the environment (varies by OS)
 .venv\Scripts\activate
-```
 
-Jupyter-Book 2.x has some issues. So we will edit (using any text editor) requirements.txt to specify version 1.0.4 for the package, i.e., jupyter-book==1.0.4, and then install all the dependence in the requirements file.
-
-```
+# Install all the dependence
 uv pip install pip
 uv pip install -r requirements.txt
 ```

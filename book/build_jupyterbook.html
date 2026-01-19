@@ -62,8 +62,7 @@
     <link rel="icon" href="../_static/fav.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Bibliography" href="bibliography.html" />
-    <link rel="prev" title="4. Introduction to Open Publishing" href="markdown2.html" />
+    <link rel="prev" title="Bibliography" href="bibliography.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -192,8 +191,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Write a book using Jupyter-Book on Github</a></li>
 <li class="toctree-l1"><a class="reference internal" href="bibliography.html">Bibliography</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Write a book using Jupyter-Book on Github</a></li>
 </ul>
 
     </div>
@@ -519,6 +518,9 @@ document.write(`
 <ul class="simple">
 <li><p>Use the “Use this template\Create a new repository” to create a new project on our GitHub repository</p></li>
 <li><p>Give a name to the book repository and simple description and then create the repository</p></li>
+</ul>
+<p>Note: Jupyter-Book 2.x has some issues when building the book using command “uv run jupyter-book build .”. So we will edit the file directly on GitHub to specify the version of 1.0.4 instead of 2.x for the package (i.e., jupyter-book==1.0.4). This is NOT necessary when those issues are addressed.</p>
+<ul class="simple">
 <li><p>Create a special branch (with the name “gh-pages”) for the book repository to publish the book as <a class="reference external" href="https://pages.github.com/">GitHub Pages</a> (basically a web site on <a class="reference external" href="http://github.io">github.io</a> to host your personal, organization, or project pages from a GitHub repository). This is done by click on “main” and type in “gh-pages” and create the gh-pages branch from main. This also initiate the process (i.e., “Initial commit”) of building the web site.</p></li>
 <li><p>The initial commit may encounter a permission error which can be resolved by changing “Settings\Actions\General\Workflow permissions” to “Read and write permission and rerun the job.</p></li>
 <li><p>Go to “Settings\Pages” to view the book web site. You can also link the site to a custom domain here.</p></li>
@@ -544,10 +546,9 @@ document.write(`
 
 <span class="c1"># Activate the environment (varies by OS)</span>
 <span class="o">.</span><span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
-</pre></div>
-</div>
-<p>Jupyter-Book 2.x has some issues. So we will edit (using any text editor) requirements.txt to specify version 1.0.4 for the package, i.e., jupyter-book==1.0.4, and then install all the dependence in the requirements file.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pip</span>
+
+<span class="c1"># Install all the dependence</span>
+<span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">pip</span>
 <span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
@@ -593,22 +594,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="markdown2.html"
+       href="bibliography.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Introduction to Open Publishing</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="bibliography.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Bibliography</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -644,7 +636,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Qiusheng Wu
+By Xingong Li
 </p>
 
   </div>
@@ -654,7 +646,7 @@ By Qiusheng Wu
 
   <p class="copyright">
     
-      © Copyright 2024.
+      © Copyright 2026.
       <br/>
     
   </p>
