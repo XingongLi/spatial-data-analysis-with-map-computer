@@ -19,23 +19,32 @@ parts:
       - file: book/basic_statistics
       - file: book/colocation
       - file: book/distance
-      - file: book/markdown
-      - file: book/introduction
 
   - caption: The Map Compute Framework
     numbered: true
     maxdepth: 2
     chapters:
-      - file: book/notebooks
-  
+      - file: book/map_compute
+      - file: book/local_ops
+      - file: book/focal_ops
+      - file: book/zones
+      - file: book/global_ops_and_set_mu
+   
   - caption: Spatial Analysis with Map Compute Framework
     numbered: true
     maxdepth: 2
     chapters:
-      - file: book/markdown2
+      - file: book/nbr_ops_connectivity_distance
+      - file: book/suitability
+      - file: book/point_randomness
+      - file: book/point_cluster
+      - file: book/spatial_autocorrelation
 
   - caption: Appendices
     chapters:
       - file: book/bibliography
       - file: book/build_jupyterbook
+      # - file: book/markdown
+      # - file: book/introduction
+      # - file: book/notebooks
       

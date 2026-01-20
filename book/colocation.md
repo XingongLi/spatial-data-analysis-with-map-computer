@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Fundamental/Basic Spatial Relationships (co-location)
+# Spatial Relations: Co-location
 
 ## Topics
 * Co-locational spatial relationship

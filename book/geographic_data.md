@@ -11,7 +11,7 @@ kernelspec:
   name: python3
 ---
 
-# Fundamentals of Geospatial Data
+# Geospatial Data
 
 ## Topics
 * Geospatial data
