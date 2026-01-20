@@ -38,13 +38,14 @@ parts:
       - file: book/suitability
       - file: book/point_randomness
       - file: book/point_cluster
-      - file: book/spatial_autocorrelation
+      - file: book/autocorrelation
+      - file: book/interpolation
 
   - caption: Appendices
     chapters:
       - file: book/bibliography
-      - file: book/build_jupyterbook
+      - file: book/jupyterbook
+      # - file: book/introduction      
       # - file: book/markdown
-      # - file: book/introduction
       # - file: book/notebooks
       

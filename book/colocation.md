@@ -161,3 +161,102 @@ kernelspec:
     * Raster: Stays the same
 * Number of attributes (columns)
     * Usually increases (attributes from both original maps)
+
+
+## Dimensionally Extended Nine-Intersection Model (DE-9IM)
+
+**Author:** Christian Strobl, German Remote Sensing Data Center (DFD), German Aerospace Center (DLR)
+
+## Synonyms
+Dimensionally Extended Nine-Intersection Model (DE-9IM), Nine-Intersection Model (9IM), Four-Intersection Model (4IM), Egenhofer Operators, Clementini Operators; Topological Operators.
+
+## Definition
+The Dimensionally Extended Nine-Intersection Model (DE-9IM) or Clementini-Matrix is specified by the OGC "Simple Features for SQL" specification for computing the spatial relationships between geometries. 
+
+It is based on the Nine-Intersection Model (9IM) or Egenhofer-Matrix, which is an extension of the Four-Intersection Model (4IM). The DE-9IM considers the two objects' interiors, boundaries, and exteriors and analyzes the intersections of these nine parts for their relationships. The model records the maximum dimension (-1, 0, 1, or 2) of the intersection geometries, where -1 corresponds to no intersection (empty set).
+
+The primary spatial relationships described by the DE-9IM are:
+* Equals
+* Disjoint
+* Intersects
+* Touches
+* Crosses
+* Within
+* Contains
+* Overlaps
+
+## Main Text
+There are three common approaches for describing topological relationships between geodata, each based on an intersection matrix.
+
+### Four-Intersection Model (4IM)
+The 4IM considers only the interior and the boundary of two objects. It creates a 2x2 matrix that describes whether the intersections between the interiors and boundaries of objects A and B are empty (0) or non-empty (1).
+
+### Nine-Intersection Model (9IM)
+The 9IM extends the 4IM by including the exterior of the objects. This results in a 3x3 matrix. Like the 4IM, it traditionally uses boolean values (empty or non-empty) to describe the intersections of Interior (I), Boundary (B), and Exterior (E).
+
+
+
+### Dimensionally Extended Nine-Intersection Model (DE-9IM)
+The DE-9IM further refines the 9IM by recording the **dimension** of the intersection rather than just a boolean state.
+
+The intersection of any two parts results in a set of points. The value in the DE-9IM matrix is the maximum dimension of this point set:
+* **-1**: The intersection is empty ($\emptyset$).
+* **0**: The intersection contains only points (0-dimensional).
+* **1**: The intersection contains lines (1-dimensional).
+* **2**: The intersection contains polygons/areas (2-dimensional).
+
+The matrix is structured as follows:
+
+| | Interior(B) | Boundary(B) | Exterior(B) |
+| :--- | :---: | :---: | :---: |
+| **Interior(A)** | dim(I(A)∩I(B)) | dim(I(A)∩B(B)) | dim(I(A)∩E(B)) |
+| **Boundary(A)** | dim(B(A)∩I(B)) | dim(B(A)∩B(B)) | dim(B(A)∩E(B)) |
+| **Exterior(A)** | dim(E(A)∩I(B)) | dim(E(A)∩B(B)) | dim(E(A)∩E(B)) |
+
+## Geometric Operators and Predicates
+
+### Disjoint
+$A \cap B = \emptyset$
+The interiors and boundaries of the two geometries do not intersect at all.
+* Pattern: `FF*FF****`
+
+
+
+### Intersects
+$A \cap B \neq \emptyset$
+The complement of Disjoint. The geometries share at least one point.
+* Pattern: `T********` or `*T*******` or `***T*****` or `****T****`
+
+### Touches
+$A \cap B \neq \emptyset$, but $Interior(A) \cap Interior(B) = \emptyset$.
+The geometries have at least one point in common, but their interiors do not overlap. This applies to Area/Area, Line/Line, Line/Area, and Point/Area, but not Point/Point.
+* Pattern: `FT*******` or `F**T*****` or `F***T****`
+
+
+
+### Crosses
+The geometries share some but not all interior points, and the dimension of the intersection is less than the maximum dimension of the two geometries.
+* Pattern: `T*T******` (for Line/Area) or `0********` (for Line/Line)
+
+
+
+### Within
+The geometry A lies entirely within the interior of B.
+* Pattern: `T*F**F***`
+
+### Contains
+The inverse of Within. Geometry B is within Geometry A.
+* Pattern: `T*****FF*`
+
+### Overlaps
+The geometries share some but not all points in common, and the intersection has the same dimension as the geometries themselves.
+* Pattern: `T*T***T**` (for Area/Area) or `1*T***T**` (for Line/Line)
+
+
+
+### Equals
+The two geometries are topologically equal; they occupy the same space.
+* Pattern: `T*F**FFF*`
+
+## Summary
+The DE-9IM is a powerful mathematical framework that allows GIS systems to query spatial relationships between complex objects rigorously. By using a 3x3 matrix of dimensions, it provides a unique "fingerprint" for every possible topological configuration between two geometric features.
