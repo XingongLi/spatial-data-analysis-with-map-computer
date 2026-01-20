@@ -11,10 +11,14 @@ parts:
     chapters:
       - file: book/preface
 
-  - caption: Geospatial Fundamentals
+  - caption: Fundamentals
     numbered: true
     maxdepth: 2
     chapters:
+      - file: book/geographic_data
+      - file: book/basic_statistics
+      - file: book/colocation
+      - file: book/distance
       - file: book/markdown
       - file: book/introduction
 

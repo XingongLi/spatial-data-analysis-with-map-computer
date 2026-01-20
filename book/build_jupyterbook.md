@@ -12,11 +12,13 @@ kernelspec:
 ---
 
 
-# Write a book using Jupyter-Book on Github
+# How to write a book using Jupyter-Book on Github
+
+This book is created using Jupyter-Book and published on GitHub. This document can be used as a reference to write another book.
 
 ## Introduction
 
-[Jupyter Book](https://jupyterbook.org/stable/) is a tool to create computational narratives (i.e., books) that are accessible, reusable, reproducible, and interactive. JB is built on the [MyST Markdonw Document ENgine (mystmd)](https://jupyterbook.org/stable/community/ecosystem/), which is a next generation document engine that is data-driven, computation-centric, and flexible. JB is a lightweight for mystmd.
+[Jupyter Book](https://jupyterbook.org/stable/) is a tool to create computational narratives (i.e., books) that are accessible, reusable, reproducible, and interactive. JB is built on the [MyST Markdonw Document Engine (mystmd)](https://jupyterbook.org/stable/community/ecosystem/), which is a next generation document engine that is data-driven, computation-centric, and flexible. JB is a lightweight for mystmd.
 
 We can write an online book using JB and publish it on Github using the [jupyter-book-demo template](https://github.com/giswqs/jupyter-book-demo) and YouTube video [Open Publishing in Action: Creating Interactive Books with Jupyter Book and MyST Markdown](https://www.youtube.com/watch?v=Z2d1Kw1xSVY) (published on 10/23/2025) which is part of the [Open Publishing](https://www.youtube.com/watch?v=BxoEM5x4EfQ&list=PLAxJ4-o7ZoPcudAyC050UOrSDr3v9leUP&index=2) part of  the [UTK Open Science Workshop](https://openscience.gishub.org/open-publishing/) held in the spring of 2025. The template sets up the project structure and configures the GitHub workflow to speed up the publishing process. This document is based on the YouTube video and the template project for reference.
 
@@ -67,11 +69,16 @@ uv pip install -r requirements.txt
 
 ## Write and edit the book
 
-We can built the book by running command, and The local book can be opened under "_build\html\index.html".
+We can built the book by running command, and the local book can be opened under "_build\html\index.html".
 ```
 uv run jupyter-book build .
 ```
 
-We can open the book project in VSC, add or change contents, and push the changes to to book web site on GitHub Pages in VSC. The template provides the workflow to automate the process.
+We can also build the book as PDF file using the following command:
+```
+uv run myst build --typst --pdf --docx
+```
+
+To update the book's web site, we can open the book project in VSC, add or change any contents, commit and synchronize the changes on GitHub Pages. The template provides the workflow to automate the process of building the book.
 
 
