@@ -73,12 +73,28 @@ We can built the book by running command, and the local book can be opened under
 ```
 uv run jupyter-book build .
 ```
+If necessary, you can also remove any existing builds by:
+```
+uv run jupyter-book clean .
+```
 
-We can also build the book as PDF file using the following command:
+To build the book as PDF file and Word document using the following command:
 ```
 uv run myst build --typst --pdf --docx
 ```
 
+## Update the book online
+
 To update the book's web site, we can open the book project in VSC, add or change any contents, commit and synchronize the changes on GitHub Pages. The template provides the workflow to automate the process of building the book.
 
+## Tools
 
+### Gemini
+
+Most of lecture slides are saved as PDF files. Each slide is saved as a PDF page in those PDF files. The following is the "Master Prompt" that I used to convert a PDF file into a MD document as the draft/outline for the topic using Gemini.
+
+"Please convert this PDF into a structured Markdown document. Use hierarchical headers and bullet points. Include all details from every slide. Keep the formatting clean by minimizing the use of bold text, and provide the final result inside a single Markdown code block for easy copying."
+
+### Microsoft MarkItDown
+
+[This X post](https://x.com/TheTuringPost/status/1977465872592867662?t=HAU2I-2JIPrk6LQHDrZMpg&s=09) mentioned using Microsoft [MarkItDown tool](https://github.com/microsoft/markitdown) to convert dozens of file types to MD. My initial test seems it is NOT as good as using Gemini. 

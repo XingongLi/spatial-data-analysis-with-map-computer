@@ -13,6 +13,8 @@ kernelspec:
 
 # Spatial Relationship: Distance
 
+Note: see [frechet and hausdorff distance](https://shapely.readthedocs.io/en/2.1.1/reference/shapely.frechet_distance.html#shapely.frechet_distance) function in shapely.
+
 ## Topics
 * Co-locational relationship
     * Qualitative (topological) and quantitative relationships
