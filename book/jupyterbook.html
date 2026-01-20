@@ -502,10 +502,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-book-repository-on-github">Create a book repository on GitHub</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-local-environment">Set up a local environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-local-book">Create a local book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-and-edit-the-book">Write and edit the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-book-online">Update the book online</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mkcdocs-and-codespell">mkcdocs and codespell</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gemini">Gemini</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microsoft-markitdown">Microsoft MarkItDown</a></li>
 </ul>
@@ -544,8 +544,8 @@ document.write(`
 <li><p>Go to “Settings\Pages” to view the book web site. You can also link the site to a custom domain here.</p></li>
 </ul>
 </section>
-<section id="set-up-a-local-environment">
-<h2>Set up a local environment<a class="headerlink" href="#set-up-a-local-environment" title="Link to this heading">#</a></h2>
+<section id="create-a-local-book">
+<h2>Create a local book<a class="headerlink" href="#create-a-local-book" title="Link to this heading">#</a></h2>
 <p>We will have a copy of the repository on local machine so that we can write the book locally and update it on the GitHub. We can use the git tool to clone a repository. In CMD,  navigate to your local folder and run the following command with your book repository URL:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to your project directory</span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">project</span>
@@ -570,28 +570,45 @@ document.write(`
 <span class="n">uv</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
-</section>
-<section id="write-and-edit-the-book">
-<h2>Write and edit the book<a class="headerlink" href="#write-and-edit-the-book" title="Link to this heading">#</a></h2>
-<p>We can built the book by running command, and the local book can be opened under “_build\html\index.html”.</p>
+<p>Now, we can build the first version of the book by running the following command. The local book can be opened under “_build\html\index.html” using a web browser.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uv</span> <span class="n">run</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>If necessary, you can also remove any existing builds by:</p>
+<p>To update the book’s web site on GitHub, we can open the book project in VSC using the Python environment, add or change any contents, commit and synchronize the changes on GitHub Pages. The template provides the workflow to automate the process of building the book.</p>
+</section>
+<section id="write-and-edit-the-book">
+<h2>Write and edit the book<a class="headerlink" href="#write-and-edit-the-book" title="Link to this heading">#</a></h2>
+<p>With the book template and workflow setup, we can use VSC and CMD to keep writing and editing the book with the following steps:</p>
+<ul>
+<li><p>Open the book folder in VSC</p></li>
+<li><p>Write and edit book contents in VSC</p></li>
+<li><p>Open a CMD, navigate to the book folder, activate the book Python environment by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">venv</span>\<span class="n">Scripts</span>\<span class="n">activate</span>
+</pre></div>
+</div>
+</li>
+<li><p>Build the book locally in the CMD using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uv</span> <span class="n">run</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">build</span> <span class="o">.</span>
+</pre></div>
+</div>
+<p>If wanted or necessary, you can remove any existing builds before building a new version by using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uv</span> <span class="n">run</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span> <span class="n">clean</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>To build the book as PDF file and Word document using the following command:</p>
+</li>
+<li><p>Commit and synchronize the book on GitHub in VSC</p></li>
+</ul>
+<p>If needed, we can built the book as PDF file and Word document using the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">uv</span> <span class="n">run</span> <span class="n">myst</span> <span class="n">build</span> <span class="o">--</span><span class="n">typst</span> <span class="o">--</span><span class="n">pdf</span> <span class="o">--</span><span class="n">docx</span>
 </pre></div>
 </div>
 </section>
-<section id="update-the-book-online">
-<h2>Update the book online<a class="headerlink" href="#update-the-book-online" title="Link to this heading">#</a></h2>
-<p>To update the book’s web site, we can open the book project in VSC, add or change any contents, commit and synchronize the changes on GitHub Pages. The template provides the workflow to automate the process of building the book.</p>
-</section>
 <section id="tools">
 <h2>Tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h2>
+<section id="mkcdocs-and-codespell">
+<h3>mkcdocs and codespell<a class="headerlink" href="#mkcdocs-and-codespell" title="Link to this heading">#</a></h3>
+<p>Those are the tools used in creating Python packages on GitHub. Can they also be used for writing a book?</p>
+</section>
 <section id="gemini">
 <h3>Gemini<a class="headerlink" href="#gemini" title="Link to this heading">#</a></h3>
 <p>Most of lecture slides are saved as PDF files. Each slide is saved as a PDF page in those PDF files. The following is the “Master Prompt” that I used to convert a PDF file into a MD document as the draft/outline for the topic using Gemini.</p>
@@ -661,10 +678,10 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-book-repository-on-github">Create a book repository on GitHub</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-a-local-environment">Set up a local environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-local-book">Create a local book</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#write-and-edit-the-book">Write and edit the book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-book-online">Update the book online</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mkcdocs-and-codespell">mkcdocs and codespell</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gemini">Gemini</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microsoft-markitdown">Microsoft MarkItDown</a></li>
 </ul>

@@ -37,7 +37,7 @@ Note: Jupyter-Book 2.x has some issues when building the book using command "uv 
 * The initial commit may encounter a permission error which can be resolved by changing "Settings\Actions\General\Workflow permissions" to "Read and write permission and rerun the job.
 * Go to "Settings\Pages" to view the book web site. You can also link the site to a custom domain here.
 
-## Set up a local environment
+## Create a local book
 
 We will have a copy of the repository on local machine so that we can write the book locally and update it on the GitHub. We can use the git tool to clone a repository. In CMD,  navigate to your local folder and run the following command with your book repository URL:
 ```
@@ -67,27 +67,42 @@ uv pip install pip
 uv pip install -r requirements.txt
 ```
 
-## Write and edit the book
-
-We can built the book by running command, and the local book can be opened under "_build\html\index.html".
+Now, we can build the first version of the book by running the following command. The local book can be opened under "_build\html\index.html" using a web browser.
 ```
 uv run jupyter-book build .
 ```
-If necessary, you can also remove any existing builds by:
-```
-uv run jupyter-book clean .
-```
 
-To build the book as PDF file and Word document using the following command:
+To update the book's web site on GitHub, we can open the book project in VSC using the Python environment, add or change any contents, commit and synchronize the changes on GitHub Pages. The template provides the workflow to automate the process of building the book.
+
+## Write and edit the book
+
+With the book template and workflow setup, we can use VSC and CMD to keep writing and editing the book with the following steps:
+* Open the book folder in VSC
+* Write and edit book contents in VSC
+* Open a CMD, navigate to the book folder, activate the book Python environment by running:
+  ```
+  .venv\Scripts\activate
+  ```
+* Build the book locally in the CMD using:
+  ```
+  uv run jupyter-book build .
+  ```
+  If wanted or necessary, you can remove any existing builds before building a new version by using:
+  ```
+  uv run jupyter-book clean .
+  ```
+* Commit and synchronize the book on GitHub in VSC
+
+If needed, we can built the book as PDF file and Word document using the following command:
 ```
 uv run myst build --typst --pdf --docx
 ```
 
-## Update the book online
-
-To update the book's web site, we can open the book project in VSC, add or change any contents, commit and synchronize the changes on GitHub Pages. The template provides the workflow to automate the process of building the book.
-
 ## Tools
+
+### mkcdocs and codespell
+
+Those are the tools used in creating Python packages on GitHub. Can they also be used for writing a book?
 
 ### Gemini
 
